@@ -4,8 +4,17 @@ import 'package:flutter_app_sale_25042023/common/base/base_widget.dart';
 import 'package:flutter_app_sale_25042023/utils/dimension_utils.dart';
 import 'package:flutter_app_sale_25042023/utils/message_utils.dart';
 
+import '../../data/api/api_request.dart';
+import '../../repository/authencation_repository.dart';
+
 class SignInPage extends StatelessWidget {
   const SignInPage({Key? key}) : super(key: key);
+
+
+
+
+
+  
 
   @override
   Widget build(BuildContext context) {
@@ -27,6 +36,18 @@ class SignUpContainer extends StatefulWidget {
 }
 
 class _SignUpContainerState extends State<SignUpContainer> {
+
+
+
+    @override
+  void didChangeDependencies() {
+    super.didChangeDependencies();
+    AuthenticationRepository repository = AuthenticationRepository();
+    repository.setApiRequest(ApiRequest());
+
+    repository.signInService("flutter2504@gmail.com", "123456789");
+  }
+
   @override
   Widget build(BuildContext context) {
     return Container(
