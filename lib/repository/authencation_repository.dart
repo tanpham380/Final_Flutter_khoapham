@@ -8,7 +8,7 @@ import 'package:flutter_app_sale_25042023/utils/exception_utils.dart';
 
 import '../data/api/app_reposnse.dart';
 
-class SignUpRepository {
+class AuthenticationRepository {
   ApiRequest? _apiRequest;
 
   void setApiRequest(ApiRequest apiRequest) {

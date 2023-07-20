@@ -12,9 +12,9 @@ import '../../../repository/authencation_repository.dart';
 
 
 class SignInBloc extends BaseBloc {
-  SignUpRepository? _repository;
+  AuthenticationRepository? _repository;
 
-  void setAuthenticationRepository(SignUpRepository repository) {
+  void setAuthenticationRepository(AuthenticationRepository repository) {
     _repository = repository;
   }
 

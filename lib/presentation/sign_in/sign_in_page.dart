@@ -9,6 +9,7 @@ import 'package:flutter_app_sale_25042023/utils/dimension_utils.dart';
 import 'package:flutter_app_sale_25042023/utils/message_utils.dart';
 import 'package:provider/provider.dart';
 
+
 import '../../repository/authencation_repository.dart';
 import 'bloc/sign_in_bloc.dart';
 import 'bloc/sign_in_event.dart';
@@ -21,13 +22,13 @@ class SignInPage extends StatelessWidget {
     return PageContainer(
       providers: [
         Provider(create: (context) => ApiRequest()),
-        ProxyProvider<ApiRequest, SignUpRepository>(
-            create: (context) => SignUpRepository(),
+        ProxyProvider<ApiRequest, AuthenticationRepository>(
+            create: (context) => AuthenticationRepository(),
             update: (context, request, repository) {
               repository?.setApiRequest(request);
-              return repository ??= SignUpRepository();
+              return repository ??= AuthenticationRepository();
             }),
-        ProxyProvider<SignUpRepository, SignInBloc>(
+        ProxyProvider<AuthenticationRepository, SignInBloc>(
             create: (context) => SignInBloc(),
             update: (context, repository, bloc) {
               bloc?.setAuthenticationRepository(repository);
