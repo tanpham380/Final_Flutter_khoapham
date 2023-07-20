@@ -5,36 +5,38 @@ import 'package:flutter_app_sale_25042023/common/base/base_event.dart';
 import 'package:flutter_app_sale_25042023/data/api/dto/user_dto.dart';
 
 import 'package:flutter_app_sale_25042023/data/parser/user_value_object_parser.dart';
-import 'package:flutter_app_sale_25042023/presentation/sign_in/bloc/sign_in_event.dart';
+
+import 'package:flutter_app_sale_25042023/repository/sign_up_repository.dart';
 
 import '../../../model/user_value_object.dart';
-import '../../../repository/authencation_repository.dart';
+import 'sign_up_event.dart';
 
 
-class SignInBloc extends BaseBloc {
+
+class SignUpBloc extends BaseBloc {
   SignUpRepository? _repository;
 
-  void setAuthenticationRepository(SignUpRepository repository) {
+  void setSignUpRepository(SignUpRepository repository) {
     _repository = repository;
   }
 
   @override
   void dispatch(BaseEvent event) {
     switch (event.runtimeType) {
-      case SignInEvent:
-        executeSignIn(event as SignInEvent);
+      case SignUpEvent:
+        executeSignUp(event as SignUpEvent);
         break;
     }
   }
 
-  void executeSignIn(SignInEvent event) async {
+  void executeSignUp(SignUpEvent event) async {
     loadingSink.add(true);
     try {
       UserDTO? userDTO =
-          await _repository?.signInService(event.email, event.password);
+          await _repository?.signUpService(event.email, event.password , event.name , event.phone , event.address);
       UserValueObject userValueObject =
           UserValueObjectParser.parseFromUserDTO(userDTO);
-      messageSink.add("Login successful");
+      messageSink.add("Create user successful");
     } catch (e) {
       messageSink.add(e.toString());
     }

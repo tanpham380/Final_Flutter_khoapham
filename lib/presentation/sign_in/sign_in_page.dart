@@ -21,13 +21,13 @@ class SignInPage extends StatelessWidget {
     return PageContainer(
       providers: [
         Provider(create: (context) => ApiRequest()),
-        ProxyProvider<ApiRequest, AuthenticationRepository>(
-            create: (context) => AuthenticationRepository(),
+        ProxyProvider<ApiRequest, SignUpRepository>(
+            create: (context) => SignUpRepository(),
             update: (context, request, repository) {
               repository?.setApiRequest(request);
-              return repository ??= AuthenticationRepository();
+              return repository ??= SignUpRepository();
             }),
-        ProxyProvider<AuthenticationRepository, SignInBloc>(
+        ProxyProvider<SignUpRepository, SignInBloc>(
             create: (context) => SignInBloc(),
             update: (context, repository, bloc) {
               bloc?.setAuthenticationRepository(repository);

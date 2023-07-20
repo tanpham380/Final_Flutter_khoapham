@@ -15,10 +15,10 @@ class SignUpRepository {
     _apiRequest = apiRequest;
   }
 
-  Future<UserDTO> signInService(String email, String password) async {
+  Future<UserDTO> signUpService(String email, String name ,String phone ,String password , String address ) async {
     Completer<UserDTO> completer = Completer();
     try {
-      Response<dynamic> response = await _apiRequest?.signIn(email, password);
+      Response<dynamic> response = await _apiRequest?.SignUp(email, password , name , phone , address);
       AppResponse<UserDTO> appResponse = AppResponse.fromJson(response.data, UserDTO.fromJson);
       completer.complete(appResponse.data);
     } on DioException catch(dioException) {

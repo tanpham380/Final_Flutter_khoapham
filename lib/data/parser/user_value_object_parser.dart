@@ -12,6 +12,8 @@ class UserValueObjectParser {
     userValueObject.phone = userDTO.phone ??= "";
     userValueObject.name = userDTO.name ??= "";
     userValueObject.token = userDTO.token ??= "";
+    userValueObject.address = userDTO.address ??= "";
+    
     return userValueObject;
   }
 }

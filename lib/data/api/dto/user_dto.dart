@@ -11,6 +11,7 @@ class UserDTO {
   String? registerDate;
 
   String? token;
+  String? address;
 
 
 
@@ -28,6 +29,8 @@ class UserDTO {
     registerDate = json["registerDate"];
 
     token = json["token"];
+    
+    address = json["address"];
 
   }
 
