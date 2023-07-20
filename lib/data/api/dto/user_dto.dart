@@ -11,6 +11,7 @@ class UserDTO {
   String? registerDate;
 
   String? token;
+  
   String? address;
 
 

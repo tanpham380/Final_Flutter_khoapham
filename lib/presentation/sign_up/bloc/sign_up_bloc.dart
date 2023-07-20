@@ -6,17 +6,18 @@ import 'package:flutter_app_sale_25042023/data/api/dto/user_dto.dart';
 
 import 'package:flutter_app_sale_25042023/data/parser/user_value_object_parser.dart';
 
-import 'package:flutter_app_sale_25042023/repository/sign_up_repository.dart';
+
 
 import '../../../model/user_value_object.dart';
+import '../../../repository/authencation_repository.dart';
 import 'sign_up_event.dart';
 
 
 
 class SignUpBloc extends BaseBloc {
-  SignUpRepository? _repository;
+  AuthenticationRepository? _repository;
 
-  void setSignUpRepository(SignUpRepository repository) {
+  void setSignUpRepository(AuthenticationRepository repository) {
     _repository = repository;
   }
 
